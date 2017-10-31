@@ -39,8 +39,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# CONFIG_SECRET_DIR
+# CONFIG_path
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
+CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
+CONFIG_SECRET_DEV_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_dev.json')
+CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_deploy.json')
+
+config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
 # MEDIA
 MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
@@ -48,26 +53,13 @@ MEDIA_URL = '/media/'
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
 
-# STATIC_DIR
-STATIC_URL = '/static/'
+# STATIC paths
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-# ec2_deploy_project/.static_root/
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
-
-# CONFIG_SECRET_DIR
-f = open(os.path.join(CONFIG_SECRET_DIR, 'settings_common.json'), 'rt')
-config_secret_common_str = f.read()
-f.close()
-config_secret_common = json.loads(config_secret_common_str)
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sdfsd'
 
 # Facebook
 FACEBOOK_APP_ID = config_secret_common['facebook']['app_id']
@@ -77,9 +69,6 @@ FACEBOOK_SCOPE =[
     'public_profile',
     'email',
 ]
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 
 # Application definition
@@ -131,13 +120,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
-
-
 # Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -149,3 +132,6 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+SECRET_KEY = config_secret_common['django']['secret_key']
+DEBUG = True
