@@ -43,7 +43,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 
 # MEDIA
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
 MEDIA_URL = '/media/'
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
@@ -77,22 +77,6 @@ FACEBOOK_SCOPE =[
     'public_profile',
     'email',
 ]
-
-# AWS
-AWS_ACCESS_KEY_ID = config_secret_common['aws']['access_key_id']
-AWS_SECRET_ACCESS_KEY = config_secret_common['aws']['secret_access_key']
-AWS_STORAGE_BUCKET_NAME = config_secret_common['aws']['s3_bucket_name']
-AWS_S3_HOST = 's3.ap-northeast-2.amazonaws.com'
-S3_USE_SIGV4 = True
-
-# AWS Storage
-STATICFILES_LOCATION = 'static'
-MEDIAFILES_LOCATION = 'media'
-
-# S3 FileStorage
-
-DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
-STATICFILES_STORAGE = 'config.storages.StaticStorage'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
