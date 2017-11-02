@@ -37,3 +37,11 @@ RUN         apt-get -y install nginx
 
 # supervisor install
 RUN         apt-get -y install supervisor
+
+# pip
+ENV         LANG C.UTF-8
+
+# 파일 복사 및 requirementtjfcl
+COPY        requirements.txt /srv/requirements.txt
+RUN         /root/.pyenv/versions/app/bin/pip install -r \
+            /srv/requirements.txt
