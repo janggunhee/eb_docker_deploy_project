@@ -1,5 +1,5 @@
-FROM        base
-MAINTAINER  def@azelf.com
+FROM        janggunhee/base
+MAINTAINER  def@janggunhee.com
 
 ENV         LANG C.UTF-8
 
