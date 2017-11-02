@@ -1,5 +1,5 @@
 FROM        janggunhee/base
-MAINTAINER  def@janggunhee.com
+MAINTAINER  dev@janggunhee.com
 
 ENV         LANG C.UTF-8
 
