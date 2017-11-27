@@ -22,24 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ROOT_DIR = os.path.dirname(BASE_DIR)
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-# Custom User model
-AUTH_USER_MODEL = 'member.User'
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
 
 # CONFIG_path
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
@@ -62,6 +44,28 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
+
+# Auth
+SUPERUSER_USERNAME = config_secret_common['django']['superuser']['username']
+SUPERUSER_PASSWORD = config_secret_common['django']['superuser']['password']
+SUPERUSER_EMAIL = config_secret_common['django']['superuser']['email']
+# Custom User model
+AUTH_USER_MODEL = 'member.User'
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 # Facebook
 FACEBOOK_APP_ID = config_secret_common['facebook']['app_id']
