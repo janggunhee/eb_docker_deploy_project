@@ -6,6 +6,7 @@
 .idea/
 .staitc_root/
 c.sh
+.media
 
 # Created by https://www.gitignore.io/api/linux,macos,python,django,pycharm
 
