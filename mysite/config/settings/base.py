@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import raven
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import json
@@ -81,6 +83,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'raven.contrib.django.raven_compat',
+
     'storages',
 
     'member',
@@ -135,3 +139,11 @@ USE_TZ = True
 
 SECRET_KEY = config_secret_common['django']['secret_key']
 DEBUG = True
+
+
+RAVEN_CONFIG = {
+    'dsn': 'https://eecf0f3d5d9d476aaa8b4abb6eb08178:fc6001ba53f0482d915eca900150649e@sentry.io/248307',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+}
