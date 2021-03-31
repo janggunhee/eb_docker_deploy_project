@@ -38,7 +38,7 @@ jmespath==0.9.3
 JPype1==0.6.2
 kombu==4.1.0
 konlpy==0.4.4
-lxml==4.1.1
+lxml==4.6.3
 matplotlib==2.1.0
 ndg-httpsclient==0.4.3
 nltk==3.2.5
